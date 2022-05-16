@@ -154,6 +154,10 @@ Create another Message Route for app mention.
 
 1. Switch to the directory where the files for your Chat Translator project are located and install the dependencies in the local node-modules folder. In the command line, type `npm install`.
 2. To run the server locally, in the command line type `node index.js`.
+   
+:::primary
+**Note**: The default port for this project is 12000 and host 0.0.0.0, you may use a different port and host by updating the config.js file.
+:::
 
 ### Test the solution
 

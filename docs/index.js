@@ -5,6 +5,7 @@ const https = require('https');
 const fs = require('fs');
 const routes = require('./routes');
 const localtunnel = require('localtunnel');
+const config = require('./config.js');
 
 // Reserved domain name for Local Tunnel
 const LT_SUBDOMAIN = 'corpuz-om';
@@ -12,9 +13,6 @@ const LT_SUBDOMAIN = 'corpuz-om';
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
-
-const PORT = 12000;
-const HOST = '0.0.0.0';
 
 //CORS Options
 app.use(cors());
@@ -24,16 +22,16 @@ app.use(express.json());
 
 app.use('/', routes);
 
-app.listen(PORT, HOST);
+app.listen(config.PORT, config.HOST);
 
 // Start express on the defined port
-app.listen(PORT, () => {
-    console.log(`Server listening on local port ${PORT}`);
+app.listen(config.PORT, () => {
+    console.log(`Server listening on local port ${config.PORT}`);
 
     // Start Local Tunnel for public internet access
     (async () => {
         const tunnel = await localtunnel({ 
-            port: PORT, 
+            port: config.PORT, 
             subdomain: LT_SUBDOMAIN
         });
 
