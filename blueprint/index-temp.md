@@ -96,7 +96,7 @@ Repeat the following steps to create two Architect inbound message flows: one fo
 
 ![Inbound message flow](images/inbound-message-flow.png "Inbound message flow")
 
-For more information, see [Add an inbound message flow]([https://help.mypurecloud.com/?p=152364](https://help.mypurecloud.com/?p=152379) "Goes to the Add an inbound message flow article") in the Genesys Cloud Resource Center.
+For more information, see [Add an inbound message flow](https://help.mypurecloud.com/?p=152379) "Goes to the Add an inbound message flow article") in the Genesys Cloud Resource Center.
   
 #### Create two inbound message routes
  
