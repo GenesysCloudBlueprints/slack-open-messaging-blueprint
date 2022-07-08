@@ -90,7 +90,7 @@ Repeat the following steps to create two Architect inbound message flows: one fo
    * **Name**: One of the following, depending on the type of integration:
     - `Slack Direct Message` (for direct message inbound message flow) 
     - `Slack App Mention` (for app_mention events inbound message flow)
- * **Division**: Your division name 
+   * **Division**: Your division name 
 4. Click **Create Flow**.
 5. Optionally, send a standard response to the customer before the message is transferred to the queue. To do this, use the **Send Response** option and enter your preferred message.
 7. Click the **Transfer to ACD** option and choose a queue.
