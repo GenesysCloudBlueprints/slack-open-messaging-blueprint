@@ -149,17 +149,17 @@ Repeat the following steps to create two inbound message route flows: one for di
 ### Update the common-variables.js file
 
 Add the values to the following fields:
-1. Genesys Cloud OAuth
-   * **clientId** - The client ID for your OAuth client 
-   * **clientSecret** - The client secret for your OAuth client
-2. Open Messaging
-   * **open_messaging_secret_token** - The value of [**Outbound Notification Webhook Signature Secret Token**](Create two open messaging integrations "Goes to the create_two_open_messaging_integrations section")  
-   * **open_messaging_direct_messaging_id** - Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging Direct Message**.
-   * **open_messaging_app_mention_id** - Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging App Mention**.
-3. Slack Configuration
-   - **app_verification_token** - From the management dashboard in the Slack app, go to **Basic Information** > **App Credentials** and add the value of **Verification Token**.
-   - **slack_bearer_token** - From the management dashboard in the Slack app, go to **OAuth & Permissions** > **OAuth Tokens for Your Workspace** and add the value of **Bot User OAuth Token**.
-   - **slack_app_mention_channel** - Launch Slack and right-click your channel. Select **Open channnel details**. At the bottom of the page, add the value of **Channel ID**.
+* **Genesys Cloud OAuth**: 
+   - **clientId**: The client ID for your OAuth client 
+   - **clientSecret**: The client secret for your OAuth client
+* **Open Messaging**:
+   - **open_messaging_secret_token**: The value of [**Outbound Notification Webhook Signature Secret Token**](Create two open messaging integrations "Goes to the create_two_open_messaging_integrations section")  
+   - **open_messaging_direct_messaging_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging Direct Message**.
+   - **open_messaging_app_mention_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging App Mention**.
+* **Slack Configuration**
+   - **app_verification_token**: From the management dashboard in the Slack app, go to **Basic Information** > **App Credentials** and add the value of **Verification Token**.
+   - **slack_bearer_token**: From the management dashboard in the Slack app, go to **OAuth & Permissions** > **OAuth Tokens for Your Workspace** and add the value of **Bot User OAuth Token**.
+   - **slack_app_mention_channel**: Launch Slack and right-click your channel. Select **Open channnel details**. At the bottom of the page, add the value of **Channel ID**.
  
 ### Run the middleware
  
