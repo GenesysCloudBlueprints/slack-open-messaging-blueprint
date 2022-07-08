@@ -180,18 +180,22 @@ Add the values to the following fields:
  
 1. Log in to Genesys Cloud as an agent and [go on queue](https://help.mypurecloud.com/?p=696 "Opens the On queue and off queue article in the Genesys Cloud Resource Center").
 2. Go to Slack and mention your Slack app.
-3. In the Slack app you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows "Goes to the Create two Architect inbound message flows section.")
-4. In Genesys Cloud, as an agent, you should receive the message from Slack and continue the conversation.
+3. In the Slack app you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows "Goes to the Create two Architect inbound message flows section").
+4. In Genesys Cloud, as an agent you should receive the message from Slack and continue the conversation.
   ![Slack app_mention event](images/slack-app-mention.png "Slack app_mention event")
+
+
   ![Genesys app_mention](images/genesys-app-mention.png "Genesys app_mention event")
  
 #### Test a direct message
  
 1. Log in to Genesys Cloud as an agent and go **On Queue**.
 2. Go to Slack and send a message.
-3. On the Slack app, you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows section. Goes to the Create two Architect inbound message flows section).
-4. In Genesys Cloud, as an agent, you should be able to receive the message from Slack and continue the conversation.
+3. In the Slack app, you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows section "Goes to the Create two Architect inbound message flows section").
+4. In Genesys Cloud, as an agent you should be able to receive the message from Slack and continue the conversation.
   ![Slack direct message](images/slack-direct-message.png "Slack direct message")
+
+
   ![Genesys direct message](images/genesys-direct-message.png "Genesys direct message")
  
 ## Additional resources
