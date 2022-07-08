@@ -29,6 +29,7 @@ This Genesys Cloud Developer Blueprint provides instructions for building a Slac
 ### Specialized knowledge
  
 * Administrator-level knowledge of Genesys Cloud
+* Experience designing Architect flows
 * Experience using the Genesys Cloud API Platform
 * Experience using the Slack API
  
