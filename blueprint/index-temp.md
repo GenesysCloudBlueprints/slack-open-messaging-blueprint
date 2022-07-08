@@ -76,7 +76,7 @@ Repeat the following steps to create two open messaging integrations: one for di
 
 ![Open messaging integration](images/open-message-platform.png "Open messaging integration")
 
-For more information, see [Configure an open messaging integration](https://help.mypurecloud.com/?p=242772 Goes to the Configure an open messaging integration article) in the Genesys Cloud Resource Center.
+For more information, see [Configure an open messaging integration](https://help.mypurecloud.com/?p=242772 "Goes to the Configure an open messaging integration article") in the Genesys Cloud Resource Center.
 
 #### Create two Architect inbound message flows
  
