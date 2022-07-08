@@ -95,18 +95,22 @@ Repeat the following steps to create two Architect inbound message flows: one fo
 8. Click **Save** and **Publish**.
 
 ![Inbound message flow](images/inbound-message-flow.png "Inbound message flow")
+
+For more information, see [Add an inbound message flow]([https://help.mypurecloud.com/?p=152364](https://help.mypurecloud.com/?p=152379) "Goes to the Add an inbound message flow article") in the Genesys Cloud Resource Center.
   
-#### Create two inbound message route flows
+#### Create two inbound message routes
  
-Repeat the following steps to create two inbound message route flows: one for direct messages and the other for app_mention events. 
+Repeat the following steps to create two inbound message routes: one for direct messages and the other for app_mention events. 
 
 1. In your Genesys Cloud organization, navigate to **Admin** > **Routing** > **Message Routing**.
 2. Click **+**.
-3. In the **Select Flow** field, select the **Slack Direct Message** (for direct message) or **Slack App Mention** (for app_mention events).
+3. In the **Select flow** list, select the **Slack Direct Message** (for direct message) or **Slack App Mention** (for app_mention events).
 4. In the **Addresses** field, select **Open Messaging Direct Message**.
 3. Click **Save**.
 
-![Inbound message route flows](images/message-routing.png "Inbound message route flows")
+![Inbound message routes](images/message-routing.png "Inbound message routes")
+
+For more information, see [Add an inbound message route](https://help.mypurecloud.com/?p=152364 "Goes to the Add an inbound message route article") in the Genesys Cloud Resource Center.
  
 ### Set up Slack
  
