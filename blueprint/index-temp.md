@@ -6,10 +6,10 @@ icon: blueprint
 image: images/flowchart.png
 category: 6
 summary: |
-This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration that uses open messaging. This integration allows agents to communicate with customers via Slack.
+This Genesys Cloud Developer Blueprint builds a Slack integration that uses open messaging to allow agents to communicate with customers via Slack.
 ---
  
-This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration that uses open messaging. This integration allows agents to communicate with customers via Slack.
+This Genesys Cloud Developer Blueprint builds a Slack integration that uses open messaging to allow agents to communicate with customers via Slack.
  
 ![Slack open messaging integration](images/flowchart.png "Slack open messaging integration")
  
