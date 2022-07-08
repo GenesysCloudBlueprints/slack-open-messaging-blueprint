@@ -201,7 +201,7 @@ Add the values to the following fields:
 ## Additional resources
  
 * [Genesys Cloud Platform Client SDK](https://developer.mypurecloud.com/api/rest/client-libraries/ "Opens the Genesys Cloud Platform Client SDK page")
-* [Open messaging](https://developer.genesys.cloud/api/digital/openmessaging/ "Opens the Open messaging page")
+* [Open messaging](https://developer.genesys.cloud/commdigital/digital/openmessaging/ "Opens the Open messaging page")
 * [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks "Opens Sending messages using Incoming Webhooks") in the Slack documentation
 * [Slack API app_mention event](https://api.slack.com/events/app_mention "Opens the app_mention page") in the Slack API documentation
 * [Slack-open-messaging-blueprint repository](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint "Opens the slack-open-messaging-blueprint repository in GitHub")
