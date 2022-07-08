@@ -156,7 +156,7 @@ Add the values to the following fields:
    - **open_messaging_secret_token**: The value of [**Outbound Notification Webhook Signature Secret Token**](Create two open messaging integrations "Goes to the create_two_open_messaging_integrations section")  
    - **open_messaging_direct_messaging_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging Direct Message**.
    - **open_messaging_app_mention_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging App Mention**.
-* **Slack Configuration**
+* **Slack Configuration**:
    - **app_verification_token**: From the management dashboard in the Slack app, go to **Basic Information** > **App Credentials** and add the value of **Verification Token**.
    - **slack_bearer_token**: From the management dashboard in the Slack app, go to **OAuth & Permissions** > **OAuth Tokens for Your Workspace** and add the value of **Bot User OAuth Token**.
    - **slack_app_mention_channel**: Launch Slack and right-click your channel. Select **Open channnel details**. At the bottom of the page, add the value of **Channel ID**.
@@ -167,16 +167,16 @@ Add the values to the following fields:
 2. To run the server locally, in the command line type `node index.js`.
   
 :::primary
-**Note**: For this project, the default port is 12000 and host is 0.0.0.0. However, you can use a different port and host by updating the config.js file.
+**Note**: For this project, the default port is 12000 and the host is 0.0.0.0. However, you can use a different port and host by updating the config.js file.
 :::
  
 ### Test the solution
  
 #### Test Slack app_mention events
  
-1. Log in to Genesys Cloud as an agent and go **On Queue**.
+1. Log in to Genesys Cloud as an agent and [go on queue](https://help.mypurecloud.com/?p=696 "Opens the On queue and off queue article in the Genesys Cloud Resource Center").
 2. Go to Slack and mention your Slack app.
-3. In the Slack app you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows section. Goes to the Create two Architect inbound message flows section)
+3. In the Slack app you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows "Goes to the Create two Architect inbound message flows section.")
 4. In Genesys Cloud, as an agent, you should receive the message from Slack and continue the conversation.
   ![Slack app_mention event](images/slack-app-mention.png "Slack app_mention event")
   ![Genesys app_mention](images/genesys-app-mention.png "Genesys app_mention event")
