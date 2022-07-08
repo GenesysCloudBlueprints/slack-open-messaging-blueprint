@@ -67,8 +67,8 @@ Repeat the following steps to create two open messaging integrations: one for di
 2. Click **Create New Integration** and then click **Open Messaging**.
 3. Specify the following values:  
    * **Name**: One of the following, depending on the type of integration:
-     ** Open Messaging Direct Message (For direct messages open messaging platform)
-     ** Open Messaging App Mention (For app mention open messaging platform)           
+      ** Open Messaging Direct Message (For direct messages open messaging platform)
+      ** Open Messaging App Mention (For app mention open messaging platform)           
    * **Outbound Notification Webhook URL**: URL of the hosted site
    * **Outbound Notification Webhook Signature Secret Token**: Any value. Make a note of the value.
 4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
