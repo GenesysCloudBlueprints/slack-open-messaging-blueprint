@@ -1,26 +1,28 @@
 ---
-title: Build a Slack and Genesys Cloud integration using open messaging
+title: Build a Slack integration with Genesys Cloud open messaging
 author: agnes.corpuz
 indextype: blueprint
 icon: blueprint
 image: images/flowchart.png
 category: 6
 summary: |
-This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration using open messaging. This allows customers using Slack have an open message interaction with a Genesys Cloud agent.
+This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration that uses open messaging. This integration allows agents to communicate with customers via Slack.
 ---
  
-This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration using open messaging. This allows customers using Slack have an open message interaction with a Genesys Cloud agent.
+This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration that uses open messaging. This integration allows agents to communicate with customers via Slack.
  
-![Slack Open Messaging](images/flowchart.png "Slack Open Messaging")
+![Slack open messaging integration](images/flowchart.png "Slack open messaging integration")
  
 ## Solution components
  
-* **Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. You deploy the Chat Translator solution in Genesys Cloud.
-* **Slack Workspace** - A channel-based messaging platform. Slack workspace enables team collaboration and allows tools and services to be connected for better information sharing.
+* **Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, the Genesys Cloud open message feature allows you to integrate with Slack.
+* **Slack Workspace** - A channel-based messaging platform. Slack Workspace enables team collaboration and allows tools and services to be connected for better information sharing.
  
 ### Software development kits (SDKs)
- 
+  
 * **Genesys Cloud Platform API SDK** - Client libraries used to simplify application integration with Genesys Cloud by handling low-level HTTP requests. We use the Genesys Cloud Platform SDK for the initial chat interaction between the agent and the customer.
+ 
+
  
 ## Prerequisites
  
@@ -37,16 +39,9 @@ This Genesys Cloud Developer Blueprint provides instructions for building a Slac
  
 ### Slack account requirements
  
-* A user account of type ‘Workspace Owner’.
+* A user account of type Workspace Owner
  
 ## Implementation steps
- 
-* [Clone the GitHub repository](#clone-the-github-repository “Goes to the Clone the GitHub repository section")
-* [Set up Gensys Cloud](#setting-up-geneys-cloud "Goes to the Setting up Genesys Cloud section")
-* [Set up Slack](#setting-up-slack "Goes to the Setting up Slack section")
-* [Update common-variables.js](#update-common-variablesjs "Goes to the Update common-variables.js section")
-* [Run the middleware](#run-the-middleware "Goes to the Run the middleware section")
-* [Test to solution](#test-the-solution "Goes to the Test the solution section")
  
 ### Clone the GitHub repository
  
@@ -54,91 +49,103 @@ This Genesys Cloud Developer Blueprint provides instructions for building a Slac
  
 ### Set up Geneys Cloud
  
-#### Create a client credentials OAuth grant
-Log in to your Genesys Cloud organization.
-Create a new OAuth client that uses the Client Credentials grant type. For more information, see [Create an OAuth client](https://help.mypurecloud.com/articles/?p=188023 "Opens the Create an OAuth client article") in the Genesys Cloud Resource Center.
-Copy the Client ID and Client Secret.
-On your local blueprint repository, and open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
-Add the Client ID and Client Secret from your OAuth client against **clientId** and **clientSecret**.
-#### Create open messaging platforms
+#### Create an OAuth client with a client credentials grant
+
+1. Log in to your Genesys Cloud organization.
+2. Create an OAuth client that uses the Client Credentials grant type. For more information, see [Create an OAuth client](https://help.mypurecloud.com/articles/?p=188023 "Opens the Create an OAuth client article") in the Genesys Cloud Resource Center.
+3. Copy the Client ID and Client Secret.
+4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
+5. For the `clientId` and `clientSecret`, specify the Client ID and Client Secret from your OAuth client.
+
+#### Create open messaging integrations
  
-Create two open messaging platforms: one for direct messages and the other for app mention. Perform the following steps twice; once for each open messaging platform.
- 
-1. Log in to your Genesys Cloud organization, navigate to **Admin > Message > Platforms**.
-2. Click **Create New Integration** and select **Open Messaging**.
-3. Add the following information in the respective fields:
-        - Name field - Open Messaging Direct Message (For direct messages open messaging platform)
-                       Open Messaging App Mention (For app mention open messaging platform)           
-        - Outbound Notification Webhook URL field - URL of the hosted site. To test the integration, use https://corpuz-om.loca.lt/slack/openmessaging/slack.
-        - Outbound Notification Webhook Signature Secret Token field - Enter a value and make a note of the value.
-4. On your local blueprint repository, and open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
-5. Add the Outbound Notification Webhook Signature Secret Token value against `open_messaging_secret_token'.
- 
+Repeat the following steps to create two open messaging integrations: one for direct messages and the other for app_mention events.  
+
 ![Open Message Platform](images/open-message-platform.png "Open Message Platform")
+
+1. In your Genesys Cloud organization, navigate to **Admin** > **Message** > **Platforms**.
+2. Click **Create New Integration** and then click **Open Messaging**.
+3. Specify the following values:  
+  * **Name**: One of the following, depending on the type of integration:
+   ** Open Messaging Direct Message (For direct messages open messaging platform)
+   ** Open Messaging App Mention (For app mention open messaging platform)           
+  * **Outbound Notification Webhook URL**: URL of the hosted site
+  * **Outbound Notification Webhook Signature Secret Token**: Any value. Make a note of the value.
+4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
+5. For the `open_messaging_secret_token`, specify the Outbound Notification Webhook Signature Secret Token value.
+6. (Optional) To test the integration, use https://corpuz-om.loca.lt/slack/openmessaging/slack.
  
+For more information, see [Configure an open messaging integration](https://help.mypurecloud.com/?p=242772 Goes to the Configure an open messaging integration article) in the Genesys Cloud Resource Center.
+
 #### Create inbound message flow
  
-Create two inbound message flows: one for direct messages and the other for app mention. Perform the following steps twice; once for each inbound message flow.
- 
- 
-1. Log in to your Genesys Cloud organization, navigate to **Admin > Architect**.
-2. Choose **Inbound message flow**, and click **+ Add**.
-3. In the **Name** field, enter **Slack Direct Message** (for direct message inbound message flow) or **Slack App Mention** (for app mention inbound message flow).
-4. Enter the division name in the **Division** field. Click **Create Flow**.
-3. Optionally, you can send a standard response to the customer before the message is transferred to the queue. Use the **Send Response** option and enter the preferred message.
-4. Use the **Transfer to ACD** option and choose a queue.
-5. Click **Save** and **Publish**.
- 
-![Inbound Message Flow](images/inbound-message-flow.png "Inbound Message Flow")
- 
+Repeat the following steps to create two inbound message flows: one for direct messages and the other for app_mention events.  
+
+![Inbound message flow](images/inbound-message-flow.png "Inbound message flow")
+
+1. In your Genesys Cloud organization, navigate to **Admin** > **Architect**.
+2. Click **Inbound message flow**, and click **+ Add**.
+3. Specify the following values: 
+  * **Name**: One of the following, depending on the type of integration:
+   * `Slack Direct Message` (for direct message inbound message flow) 
+   * `Slack App Mention` (for app_mention events inbound message flow)
+ * **Division**: Your division name 
+4. Click **Create Flow**.
+5. Optionally, send a standard response to the customer before the message is transferred to the queue. To do this, use the **Send Response** option and enter your preferred message.
+7. Click the **Transfer to ACD** option and choose a queue.
+8. Click **Save** and **Publish**.
+  
 #### Create Message Routing
  
-Create two inbound message flows: one for direct messages and the other for app mention. Perform the following steps twice; once for each inbound message flow.
- 
-1. Log in to your Genesys Cloud organization, navigate to **Admin > Routing > Message Routing**.
+Repeat the following steps to create two inbound message flows: one for direct messages and the other for app_mention events. 
+
+![Message routing](images/message-routing.png "Message routing")
+
+1. In your Genesys Cloud organization, navigate to **Admin** > **Routing** > **Message Routing**.
 2. Click **+**.
-3. In the **Select Flow** field, select the **Slack Direct Message** (for direct message) or **Slack App Mention** (for app mention).
+3. In the **Select Flow** field, select the **Slack Direct Message** (for direct message) or **Slack App Mention** (for app_mention events).
 4. In the **Addresses** field, select **Open Messaging Direct Message**.
 3. Click **Save**.
  
-![Message Routting](images/message-routing.png "Message Routting")
+### Set up Slack
  
-### Setting up Slack
+#### Enable incoming webhooks
  
-#### Enable Incoming Webhooks
- 
-1. Create a Slack app and choose a Slack workspace to associate your app with. For more information, see [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks "Opens Sending messages using Incoming Webhooks") in the Slack API documentation.
+1. Create a Slack app and choose a Slack workspace to associate with your app. For more information, see [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks "Opens Sending messages using Incoming Webhooks") in the Slack API documentation.
 2. Go to the management dashboard in the Slack app, navigate to **Incoming Webhooks**.
 3. Toggle the **Activate Incoming Webhooks**, and then click the **Add New Webhook to Workspace**.
 4. Select a channel that the app will post to and click **Authorize**.
-   ![Slack Incoming Webhooks](images/incoming-webhooks.png "Slack Incoming Webhooks")
+   ![Slack incoming webhooks](images/incoming-webhooks.png "Slack incoming webhooks")
  
-#### Event Subscriptions
+#### Configure event subscriptions
  
-1. From the management dashboard in the Slack app, navigate to **Event Subscriptions**.
-2. Toggle the **Enable Events**.
-3. In the **Request URL** field, add the URL of the hosted site. After you add the URL, ensure that **Verified** message appears. To test the integration, use `https://corpuz-om.loca.lt/slack/openmessaging/genesys'.
-   ![Slack Event Subscription](images/slack-event-subscription.png "Slack Event Subscription")
-4. Scroll down to **Subscribe to bot events** and click **Add Bot User Event** to add `app_mention` and `message:im'.
+1. In the Slack app, from the management dashboard, navigate to **Event Subscriptions**.
+2. Toggle **Enable Events**.
+3. In the **Request URL** field, add the URL of the hosted site. 
+4. Ensure that **Verified** message appears. To test the integration, use `https://corpuz-om.loca.lt/slack/openmessaging/genesys`.
+   ![Slack event subscription](images/slack-event-subscription.png "Slack event subscription")
+4. Under **Subscribe to bot events**, click **Add Bot User Event** and add `app_mention` and `message:im'.
    ![Slack Bot Events](images/slack-bot-events.png "Slack Bot Events")
 5. Click **Save Changes**.
  
-#### OAuth and Permissions
+#### Configure the OAuth token and scope
  
-1. From the management dashboard in the Slack app, navigate to **OAuth & Permissions**.
-2. Go to **OAuth Tokens for Your Workspace** and copy the value available in the **Bot User OAuth Token** field.
-3. On your local blueprint repository, and open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file, and paste this value against `slack_bearer_token`.
+1. In the Slack app, from the management dashboard, navigate to **OAuth & Permissions**.
+2. Go to **OAuth Tokens for Your Workspace** and copy the value in the **Bot User OAuth Token** field.
+3. In your local blueprint repository open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file, and specify this value for `slack_bearer_token`.
 ![Slack OAuth](images/slack-oauth.png "Slack OAuth")
-4. From the management dashboard, go to **Scopes** and add the following **Bot Token Scopes**: `app_mentions:read`, `chat:write`, `im:history`, and `incoming-webhook`. Click **Add an OAuth Scope**.
-   ![Slack Scopes](images/slack-scopes.png "Slack Scopes")
+4. From the management dashboard, go to **Scopes** and add the following **Bot Token Scopes**: `app_mentions:read`, `chat:write`, `im:history`, and `incoming-webhook`. 
+5. Click **Add an OAuth Scope**.
+   ![Slack scopes](images/slack-scopes.png "Slack scopes")
  
-#### Enable Bots
+#### Enable bots
  
-1. From the management dashboard in the Slack app, navigate to **App Home**.
-2. Go to **Show Tabs**, toggle **Message Tab** and check the **Allow users to send Slash commands and messages from the message tab**.
-   ![Slack Bots](images/slack-bots.png "Slack Bots")
+1. In the Slack app, from the management dashboard, navigate to **App Home**.
+2. Go to **Show Tabs**, toggle **Message Tab** and select the **Allow users to send Slash commands and messages from the message tab**.
+   ![Slack bots](images/slack-bots.png "Slack bots")
  
-### Update common-variables.js
+### Update the common-variables.js file
+
 Add the values to the following fields:
 1. Genesys Cloud OAuth
    - **clientId** - Place your client ID using the Client Credentials grant type.
@@ -186,4 +193,5 @@ Add the values to the following fields:
 * [Genesys Cloud Platform Client SDK](https://developer.mypurecloud.com/api/rest/client-libraries/ "Opens the Genesys Cloud Platform Client SDK page")
 * [Open Messaging](https://developer.genesys.cloud/api/digital/openmessaging/ "Opens the Open messaging page")
 * [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks "Opens Sending messages using Incoming Webhooks")
+* [Slack API app_mention event](https://api.slack.com/events/app_mention "Opens the app_mention page in the Slack API documentation")
 * [Slack-open-messaging-blueprint repository](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint "Opens the slack-open-messaging-blueprint repository in GitHub")
