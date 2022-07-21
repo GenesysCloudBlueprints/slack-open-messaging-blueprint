@@ -1,7 +1,7 @@
-# Build a Slack and Genesys Cloud integration using open messaging
+# Build a Slack integration with Genesys Cloud open messaging
 
-> View the full [Build a Slack and Genesys Cloud integration using open messaging article](https://developer.mypurecloud.com/blueprints/slack-open-messaging-blueprint/) on the Genesys Cloud Developer Center.
+> View the full [Build a Slack integration with Genesys Cloud open messaging blueprint](https://developer.mypurecloud.com/blueprints/slack-open-messaging-blueprint/) in the Genesys Cloud Developer Center.
 
-This Genesys Cloud Developer Blueprint provides instructions for building a Slack integration using open messaging. This allows customers using Slack have an open message interaction with a Genesys Cloud agent.
+This Genesys Cloud Developer Blueprint builds a Slack integration that uses open messaging to allow agents to communicate with customers via Slack.
 
-![Slack Open Messaging](blueprint/images/flowchart.png "Slack Open Messaging")
+![Slack open messaging integration](blueprint/images/flowchart.png "Slack open messaging integration")
