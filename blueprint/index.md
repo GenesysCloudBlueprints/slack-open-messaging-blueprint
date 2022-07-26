@@ -10,8 +10,17 @@ summary: This Genesys Cloud Developer Blueprint builds a Slack integration that 
  
 This Genesys Cloud Developer Blueprint builds a Slack integration that uses open messaging to allow agents to communicate with customers via Slack.
  
-![Slack open messaging integration](images/flowchart.png "Slack open messaging integration")
- 
+![Slack open messaging integration](images/overview.png "Slack open messaging integration")
+
+## Scenario
+
+An organization wants to integrate slack with Genesys Cloud using open messaging API:
+
+1. **The customer sends a message by mentioning the Slack channel.** The agent receives the customer's incoming message and have a conversation with the customer.
+
+2. **The customer sends a message by direct message to the Slack channel.** The agent receives the customer's incoming message and have a conversation with the customer.
+
+
 ## Solution components
  
 * **Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, the Genesys Cloud open message feature allows you to integrate with Slack.
@@ -43,7 +52,7 @@ This Genesys Cloud Developer Blueprint builds a Slack integration that uses open
  
 ## Implementation steps
  
-### Clone the GitHub repository
+### Download the repository containing the project files
  
 1. Clone the [slack-open-messaging-blueprint repository](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint "Opens the slack-open-messaging-blueprint repository in GitHub") to your local machine.
  
@@ -54,7 +63,7 @@ This Genesys Cloud Developer Blueprint builds a Slack integration that uses open
 1. Log in to your Genesys Cloud organization.
 2. Create an OAuth client that uses the Client Credentials grant type. For more information, see [Create an OAuth client](https://help.mypurecloud.com/articles/?p=188023 "Opens the Create an OAuth client article") in the Genesys Cloud Resource Center.
 3. Copy the Client ID and Client Secret.
-4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
+4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js "Opens the common-variables") file.
 5. For the `clientId` and `clientSecret`, specify the Client ID and Client Secret from your OAuth client.
 
 #### Create two open messaging integrations
@@ -69,7 +78,7 @@ Repeat the following steps to create two open messaging integrations: one for di
       - Open Messaging App Mention (For app mention open messaging platform)           
    * **Outbound Notification Webhook URL**: URL of the hosted site
    * **Outbound Notification Webhook Signature Secret Token**: Any value. Make a note of it.
-4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file.
+4. In your local blueprint repository, open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js "Opens the common-variables") file.
 5. For the `open_messaging_secret_token`, specify the Outbound Notification Webhook Signature Secret Token value.
 6. (Optional) To test the integration, use https://corpuz-om.loca.lt/slack/openmessaging/slack.
 
@@ -136,7 +145,7 @@ For more information, see [Add an inbound message route](https://help.mypureclou
  
 1. In the Slack app, from the management dashboard, navigate to **OAuth & Permissions**.
 2. Go to **OAuth Tokens for Your Workspace** and copy the value in the **Bot User OAuth Token** field.
-3. In your local blueprint repository open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js) file, and specify the copied value for `slack_bearer_token`.
+3. In your local blueprint repository open the [/docs/common-variables.js](https://github.com/GenesysCloudBlueprints/slack-open-messaging-blueprint/blob/main/docs/common-variables.js "Opens the common-variables") file, and specify the copied value for `slack_bearer_token`.
 ![Slack OAuth](images/slack-oauth.png "Slack OAuth")
 4. From the management dashboard, go to **Scopes** and add the following **Bot Token Scopes**: `app_mentions:read`, `chat:write`, `im:history`, and `incoming-webhook`. 
 5. Click **Add an OAuth Scope**.
@@ -157,8 +166,8 @@ Add the values to the following fields:
    - **clientSecret**: The client secret for your OAuth client
 * **Open Messaging**:
    - **open_messaging_secret_token**: The value of [**Outbound Notification Webhook Signature Secret Token**](Create two open messaging integrations "Goes to the create_two_open_messaging_integrations section")  
-   - **open_messaging_direct_messaging_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging Direct Message**.
-   - **open_messaging_app_mention_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open) and add the ID of **Open Messaging App Mention**.
+   - **open_messaging_direct_messaging_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open "Opens the /api/v2/conversations/messaging/integrations/open API") and add the ID of **Open Messaging Direct Message**.
+   - **open_messaging_app_mention_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open "Opens the /api/v2/conversations/messaging/integrations/open API") and add the ID of **Open Messaging App Mention**.
 * **Slack Configuration**:
    - **app_verification_token**: From the management dashboard in the Slack app, go to **Basic Information** > **App Credentials** and add the value of **Verification Token**.
    - **slack_bearer_token**: From the management dashboard in the Slack app, go to **OAuth & Permissions** > **OAuth Tokens for Your Workspace** and add the value of **Bot User OAuth Token**.
