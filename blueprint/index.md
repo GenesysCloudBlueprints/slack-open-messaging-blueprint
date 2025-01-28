@@ -172,7 +172,7 @@ Add the values to the following fields:
    - **clientId**: The client ID for your OAuth client 
    - **clientSecret**: The client secret for your OAuth client
 * **Open Messaging**:
-   - **open_messaging_secret_token**: The value of [**Outbound Notification Webhook Signature Secret Token**](Create two open messaging integrations "Goes to the create_two_open_messaging_integrations section")  
+   - **open_messaging_secret_token**: The value of [**Outbound Notification Webhook Signature Secret Token**](#create-two-open-messaging-integrations "Goes to the create_two_open_messaging_integrations section")  
    - **open_messaging_direct_messaging_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open "Opens the /api/v2/conversations/messaging/integrations/open API") and add the ID of **Open Messaging Direct Message**.
    - **open_messaging_app_mention_id**: Run [GET /api/v2/conversations/messaging/integrations/open](https://developer.genesys.cloud/devapps/api-explorer#get-api-v2-conversations-messaging-integrations-open "Opens the /api/v2/conversations/messaging/integrations/open API") and add the ID of **Open Messaging App Mention**.
 * **Slack Configuration**:
@@ -195,7 +195,7 @@ Add the values to the following fields:
  
 1. Log in to Genesys Cloud as an agent and [go on queue](https://help.mypurecloud.com/?p=696 "Opens the On queue and off queue article in the Genesys Cloud Resource Center").
 2. Go to Slack and mention your Slack app.
-3. In the Slack app you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows "Goes to the Create two Architect inbound message flows section").
+3. In the Slack app you should receive the message that you configured for the [Architect inbound message flow](#create-two-architect-inbound-message-flows "Goes to the Create two Architect inbound message flows section").
 4. In Genesys Cloud, as an agent you should receive the message from Slack and continue the conversation.
   ![Slack app_mention event](images/slack-app-mention.png "Slack app_mention event")
 
@@ -206,7 +206,7 @@ Add the values to the following fields:
  
 1. Log in to Genesys Cloud as an agent and go **On Queue**.
 2. Go to Slack and send a message.
-3. In the Slack app, you should receive the message that you configured for the [Architect inbound message flow](#create_two_architect_inbound_message_flows section "Goes to the Create two Architect inbound message flows section").
+3. In the Slack app, you should receive the message that you configured for the [Architect inbound message flow](#create-two-architect-inbound-message-flows "Goes to the Create two Architect inbound message flows section").
 4. In Genesys Cloud, as an agent you should be able to receive the message from Slack and continue the conversation.
   ![Slack direct message](images/slack-direct-message.png "Slack direct message")
 
